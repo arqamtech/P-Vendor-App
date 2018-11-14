@@ -24,6 +24,7 @@ export class InventoryPage {
 
   getProducts(){
     this.db.list("Products").snapshotChanges().subscribe(itemSnap=>{
+      this.products = []
       itemSnap.forEach(snap=>{
         var temp : any = snap.payload.val();
         temp.key = snap.key;

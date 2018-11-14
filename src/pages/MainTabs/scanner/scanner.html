@@ -1,3 +1,8 @@
+<ion-header>
+  <ion-navbar color="primary" >
+    <ion-title>Scan Products</ion-title>
+  </ion-navbar>
+</ion-header>
 <ion-content padding>
 
 
@@ -10,7 +15,15 @@
     <ion-card-content>
       <ion-item>
         <p ion-text color="primary" item-start>Product Name</p>
-        <p item-end>{{product.p}}</p>
+        <p item-end>{{product.Name}}</p>
+      </ion-item>
+      <ion-item>
+        <p ion-text color="primary" item-start>Product Category</p>
+        <p item-end>{{product.Category}}</p>
+      </ion-item>
+      <ion-item>
+        <p ion-text color="primary" item-start>Product SubCategory</p>
+        <p item-end>{{product.SubCategory}}</p>
       </ion-item>
     </ion-card-content>
   </ion-card>
