@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the InventoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AddProductsPage } from '../../Inventory/add-products/add-products';
+import { AngularFireDatabase } from 'angularfire2/database';
+import * as firebase from 'firebase';
+import { ViewQrCodePage } from '../../view-qr-code/view-qr-code';
 
 @IonicPage()
 @Component({
@@ -15,11 +12,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InventoryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  products : Array<any>=[];
+
+  constructor(
+  public navCtrl: NavController, 
+  public db : AngularFireDatabase,
+  public navParams: NavParams
+  ) {
+    this.getProducts();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InventoryPage');
+  getProducts(){
+    this.db.list("Products").snapshotChanges().subscribe(itemSnap=>{
+      itemSnap.forEach(snap=>{
+        var temp : any = snap.payload.val();
+        temp.key = snap.key;
+        this.products.push(temp);
+      })
+    })
   }
 
+  viewCode(p){
+    this.navCtrl.push(ViewQrCodePage, {prod : p.key} );
+  }
+  gtAddProduct(){
+    this.navCtrl.push(AddProductsPage);
+  }
 }

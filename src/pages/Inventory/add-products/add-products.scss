@@ -1,0 +1,5 @@
+page-add-products {
+ion-input,ion-select{
+    border-bottom: solid 1px map-get($colors,primary);
+}
+}

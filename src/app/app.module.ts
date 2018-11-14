@@ -19,6 +19,13 @@ import { ProfilePage } from '../pages/MainTabs/profile/profile';
 import { NotificationsPage } from '../pages/Supps/notifications/notifications';
 import { OrdersPage } from '../pages/MainTabs/orders/orders';
 import { ScannerPage } from '../pages/MainTabs/scanner/scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { AddProductsPage } from '../pages/Inventory/add-products/add-products';
+import { AddCatPage } from '../pages/Inventory/add-cat/add-cat';
+import { AddSubCatPage } from '../pages/Inventory/add-sub-cat/add-sub-cat';
+import { ViewSubCategoriesPage } from '../pages/Inventory/view-sub-categories/view-sub-categories';
+import { ViewQrCodePage } from '../pages/view-qr-code/view-qr-code';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -45,6 +52,12 @@ firebase.initializeApp(firebaseCred);
     ProfilePage,
     OrdersPage,
     ScannerPage,
+    InventoryPage,
+    AddProductsPage,
+    AddCatPage,
+    AddSubCatPage,
+    ViewSubCategoriesPage,
+    ViewQrCodePage,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +67,7 @@ firebase.initializeApp(firebaseCred);
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgxQRCodeModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,12 +83,18 @@ firebase.initializeApp(firebaseCred);
     ProfilePage,
     OrdersPage,
     ScannerPage,
-
+    InventoryPage,
+    AddProductsPage,
+    AddCatPage,
+    AddSubCatPage,
+    ViewSubCategoriesPage,
+    ViewQrCodePage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BarcodeScanner,
   ]
 })
 export class AppModule {}

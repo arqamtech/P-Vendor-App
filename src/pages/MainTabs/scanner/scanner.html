@@ -1,14 +1,33 @@
 <ion-content padding>
-  <ion-slides>
-    <ion-slide>
-      <ion-card>
-        <ion-card-content>
-          <ion-card-title>Camera Preview</ion-card-title>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
 
 
+
+<ion-slides>
+  <ion-slide>
+
+
+  <ion-card *ngIf="scannedCode">
+    <ion-card-content>
+      <ion-item>
+        <p ion-text color="primary" item-start>Product Name</p>
+        <p item-end>{{product.p}}</p>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label floating>Quantity</ion-label>
+    <ion-input type="number" [(ngModel)]="Quantity"></ion-input>
+  </ion-item>
+
+  <button ion-button (click)="checkData()">Add To Inventory</button>
+
+
+
+
+  <button ion-button (click)="scanCode()">Scan Again</button>
+
+</ion-slide>
+</ion-slides>
 
 </ion-content>
