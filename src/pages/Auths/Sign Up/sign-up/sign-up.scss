@@ -1,3 +1,10 @@
 page-sign-up {
-
+    ion-input,ion-textarea{
+        border-bottom : 1px solid map-get($colors,primary);
+    }
+    .logo{
+        width: 50%;
+        margin: auto;
+      }
+    
 }

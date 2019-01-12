@@ -22,10 +22,11 @@ import { ScannerPage } from '../pages/MainTabs/scanner/scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { AddProductsPage } from '../pages/Inventory/add-products/add-products';
-import { AddCatPage } from '../pages/Inventory/add-cat/add-cat';
-import { AddSubCatPage } from '../pages/Inventory/add-sub-cat/add-sub-cat';
-import { ViewSubCategoriesPage } from '../pages/Inventory/view-sub-categories/view-sub-categories';
-import { ViewQrCodePage } from '../pages/view-qr-code/view-qr-code';
+import { NotVerifiedpagePage } from '../pages/Supps/not-verifiedpage/not-verifiedpage';
+import { ContactPage } from '../pages/Profile/contact/contact';
+import { FaqsPage } from '../pages/Profile/faqs/faqs';
+import { ProfileDetailsPage } from '../pages/Profile/profile-details/profile-details';
+import { ViewQrCodePage } from '../pages/Inventory/view-qr-code/view-qr-code';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -54,10 +55,11 @@ firebase.initializeApp(firebaseCred);
     ScannerPage,
     InventoryPage,
     AddProductsPage,
-    AddCatPage,
-    AddSubCatPage,
-    ViewSubCategoriesPage,
     ViewQrCodePage,
+    NotVerifiedpagePage,
+    ContactPage,
+    FaqsPage,
+    ProfileDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -85,10 +87,11 @@ firebase.initializeApp(firebaseCred);
     ScannerPage,
     InventoryPage,
     AddProductsPage,
-    AddCatPage,
-    AddSubCatPage,
-    ViewSubCategoriesPage,
     ViewQrCodePage,
+    NotVerifiedpagePage,
+    ContactPage,
+    FaqsPage,
+    ProfileDetailsPage,
   ],
   providers: [
     StatusBar,

@@ -1,44 +1,41 @@
 <ion-header>
-  <ion-navbar color="primary" >
+  <ion-navbar color="primary">
     <ion-title>Orders</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content >
-<div padding-top>
-  <ion-segment [(ngModel)]="Orders">
-    <ion-segment-button value="Pending">
-      Pending
-    </ion-segment-button>
-    <ion-segment-button value="Completed">
-      Completed
-    </ion-segment-button>
-  </ion-segment>
-</div>
+<ion-content>
+  <div>
+    <ion-segment [(ngModel)]="Orders">
+      <ion-segment-button value="Pending">
+        Pending
+      </ion-segment-button>
+      <ion-segment-button value="Completed">
+        Completed
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
 
-<div [ngSwitch]="pet">
-  <ion-list *ngSwitchCase="'Pending'">
-    <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col col-4>
-            <button ion-button clear icon-only large>
-              <ion-icon name="cube"></ion-icon>
-            </button>
-            <ion-card-content>
-              <ion-card-title>Pending Orders</ion-card-title>
-            </ion-card-content>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-</ion-list>
+  <div [ngSwitch]="Orders">
+    <ion-list *ngSwitchCase="'Pending'">
+      <ion-list>
+        <ion-item *ngFor="let o of pendingOrders">
+          <ion-avatar item-start>
+            <img [src]="o.ImageUrl">
+          </ion-avatar>
+          <h2>{{o.Name}}</h2>
+          <h3>Quantity : {{o.Quantity}}</h3>
+          <h3>Amount : {{o.Amount}}</h3>
+        </ion-item>
+      </ion-list>
 
-  <ion-list *ngSwitchCase="'Completed'">
     </ion-list>
-</div>
+
+    <ion-list *ngSwitchCase="'Completed'">
+    </ion-list>
+  </div>
 
 
 </ion-content>

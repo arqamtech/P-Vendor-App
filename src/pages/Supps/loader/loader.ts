@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LoaderPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,11 +8,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoaderPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  authState : boolean = false;
+  dbStat : boolean = false;
+
+
+  loading = this.loadingCtrl.create({
+    spinner: 'crescent',
+    showBackdrop : false,	
+  });
+
+  constructor(
+  public navCtrl: NavController, 
+  public loadingCtrl : LoadingController,
+  public navParams: NavParams
+  ) {
+
+  }
+  ionViewDidEnter(){
+    this.loading.present();
+  }
+  ionViewDidLeave(){
+    this.loading.dismissAll();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoaderPage');
-  }
 
 }

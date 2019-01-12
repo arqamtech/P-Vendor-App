@@ -2,22 +2,17 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, PopoverController, MenuController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ProfileDetailsPage } from '../../Profile/profile-details/profile-details';
-import { ContactPage } from '../../Profile/contact/contact';
-import { FaqsPage } from '../../Profile/faqs/faqs';
+
+
+
 
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html',
+  selector: 'page-profile-details',
+  templateUrl: 'profile-details.html',
 })
-export class ProfilePage {
-
-  loading = this.loadingCtrl.create({
-    spinner: 'crescent',
-    showBackdrop : false,	
-  });
+export class ProfileDetailsPage {
 
 
   constructor(
@@ -31,35 +26,6 @@ export class ProfilePage {
     this.getVendor();
   }
 
-  signOutConfirm(){
-    let alert = this.alertCtrl.create({
-      title: 'Confirm logout ?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Logout',
-          handler: () => {
-            this.signOut();
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
-  
-    signOut(){
-      this.loading.present();
-      firebase.auth().signOut().then(()=>{
-        this.loading.dismiss();
-      });
-    }
- 
     
     StoreName: string;
     OwnerName: string;
@@ -94,11 +60,8 @@ export class ProfilePage {
         this.created = temp.TimeStamp;
         this.status = temp.Status;
       })
+      loading.dismiss();
     }
   
-
-    gtDetails(){this.navCtrl.push(ProfileDetailsPage)}
-    gtContact(){this.navCtrl.push(ContactPage)}
-    gtFaqs(){this.navCtrl.push(FaqsPage)}
 
 }

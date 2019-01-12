@@ -1,18 +1,52 @@
-<!--
-  Generated template for the SignUpPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>signUp</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
 
+  <ion-card>
+    <ion-card-content>
+
+      <img src="assets/imgs/tempLogo.png"  class="logo" />
+
+      <h1 class="signinTitle" ion-text text-center margin-top >Sign Up as Posters Vendor</h1>
+
+      <ion-item>
+        <ion-label color="whiter" floating>Store Name</ion-label>
+        <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="StoreName" autofocus></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="whiter" floating>Owner Name</ion-label>
+        <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="OwnerName" autofocus></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="whiter" floating>Phone Number</ion-label>
+        <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="PhoneNumber" autofocus></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="whiter" floating>Store Category</ion-label>
+        <ion-input type="text" (keyup.enter)="checkData()" [(ngModel)]="StoreCategory" autofocus></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="whiter" floating>Store Location</ion-label>
+        <ion-textarea type="text" (keyup.enter)="checkData()" [(ngModel)]="StoreLocation" autofocus></ion-textarea>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label color="whiter" floating>Email</ion-label>
+        <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="email" autofocus></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="whiter" floating>Password</ion-label>
+        <ion-input type="password" (keyup.enter)="checkData()" [(ngModel)]="pass"></ion-input>
+      </ion-item>
+
+      <button ion-button small margin-top color="primary" (click)="checkData()">Sign Up</button>
+      <br />
+      <button ion-button clear (click)="gtLogin()">Already a Vendor ? Sign In</button>
+    </ion-card-content>
+
+
+  </ion-card>
 </ion-content>

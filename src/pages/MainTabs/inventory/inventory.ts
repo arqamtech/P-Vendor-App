@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddProductsPage } from '../../Inventory/add-products/add-products';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
-import { ViewQrCodePage } from '../../view-qr-code/view-qr-code';
+import { ViewQrCodePage } from '../../Inventory/view-qr-code/view-qr-code';
 
 @IonicPage()
 @Component({
@@ -28,13 +28,14 @@ export class InventoryPage {
       itemSnap.forEach(snap=>{
         var temp : any = snap.payload.val();
         temp.key = snap.key;
+        console.log(temp);
         this.products.push(temp);
       })
     })
   }
 
   viewCode(p){
-    this.navCtrl.push(ViewQrCodePage, {prod : p.key} );
+    this.navCtrl.push(ViewQrCodePage, {prod : p} );
   }
   gtAddProduct(){
     this.navCtrl.push(AddProductsPage);

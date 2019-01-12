@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AddSubCatPage } from './add-sub-cat';
+import { ContactPage } from './contact';
 
 @NgModule({
   declarations: [
-    AddSubCatPage,
+    ContactPage,
   ],
   imports: [
-    IonicPageModule.forChild(AddSubCatPage),
+    IonicPageModule.forChild(ContactPage),
   ],
 })
-export class AddSubCatPageModule {}
+export class ContactPageModule {}

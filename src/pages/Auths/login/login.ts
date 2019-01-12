@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, LoadingController, ToastController, Alert } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { SignUpPage } from '../Sign Up/sign-up/sign-up';
 
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +11,64 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email: string;
+  pass: string;
+
+  public user: Array<any> = [];
+
+
+  constructor(
+    public navCtrl: NavController,
+    private menuCtrl: MenuController,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
+  ) {
+    this.menuCtrl.enable(false);
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+
+
+  checkData() {
+    if (this.email) {
+      if (this.pass) {
+        this.login();
+      } else {
+        this.presentToast("Password Not Provided")
+      }
+    } else {
+      this.presentToast("Email Not Provided")
+    }
   }
 
+
+  login() {
+    let loading = this.loadingCtrl.create({
+      content: 'Logging In...'
+    });
+    loading.present();
+
+    firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(() => {
+      loading.dismiss();
+    }).catch((e) => {
+      var err = e.message;
+      this.presentToast(err);
+      loading.dismiss();
+    })
+
+  }
+
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 4000,
+      position: "top",
+      showCloseButton: false,
+    });
+    toast.present();
+  }
+  gtSignUp() {
+    this.navCtrl.setRoot(SignUpPage);
+  }
 }

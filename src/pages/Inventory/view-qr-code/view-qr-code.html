@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{prod.Name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item>
+    <h3 ion-text color="primary" item-start>Quantity</h3>
+    <h3 item-end>{{prod.Quantity}}</h3>
+  </ion-item>
+
+
+  <img [src]="prod.ImageUrl">
+
+  <ion-item (click)="addInventory()" no-lines>
+    <ion-icon color="primary" item-start name="add"></ion-icon>
+    <h2 ion-text color="primary">Add Inventory</h2>
+  </ion-item>
+
+  <ion-item (click)="delPConfirm()" no-lines>
+    <ion-icon color="primary" item-start name="md-trash"></ion-icon>
+    <h2 ion-text color="primary">Delete Product</h2>
+  </ion-item>
+
+
+
+
+
+
+  <ion-card>
+    <ion-card-content>
+      <ngx-qrcode [qrc-value]="prod.key"></ngx-qrcode>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
